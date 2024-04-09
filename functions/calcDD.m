@@ -4,7 +4,8 @@ function [x] = CalcDD(A, y, CASES)
     output_vector = zeros(1, CASES);
         
     [rows, cols] = size(A);
-
+    
+    %getting the set of non-defectives by using COMP
     comp_x_res = calcCOMP(A,y,CASES);
     non_defectives = ~comp_x_res;
 
@@ -33,14 +34,6 @@ function [x] = CalcDD(A, y, CASES)
 
             end
         end
-        % for j = 1:cols
-        %     if y(i) == 1 
-        %         if isKey(setDict, j) == false && A(i,j) == 1
-        %             remove(setDict, j);
-        %             A(i,j) = 0;  %set all positve tests to zero if 
-        %         end
-        %     end
-        % end
     end 
    
     

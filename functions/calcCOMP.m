@@ -8,12 +8,11 @@ function [x] = calcCOMP(A, y, CASES)
         setDict(num) = num;
     end
     
-    % Example: Check if 5 is in the set
-    %isInSet = isKey(setDict, 5) % Returns true if 5 is in the set, false otherwise
+    %using a dictioary as as set, to increase speed
 
     [rows, cols] = size(A);
 
-    % Loop through each element of the matrix
+    % Loop through each element of the matrix, remove each case in a negeative test
     for i = 1:rows
         for j = 1:cols
             if y(i) == 0 
@@ -27,7 +26,7 @@ function [x] = calcCOMP(A, y, CASES)
     set_to_vector = convertSetToVector(setDict);
     
 
-        % Create a vector filled with zeros
+    % Create a vector filled with zeros
     output_vector = zeros(1, CASES);
     
     % Set the elements at indices to 1
