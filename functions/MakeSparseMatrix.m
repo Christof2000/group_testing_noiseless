@@ -1,6 +1,7 @@
 function matrix = MakeSparseMatrix(rows,cols,ones_per_col)
 
-
+%Function creates a random sparse matrix like the given dataset this will
+%be the ground truth of x
 
 
 matrix = zeros(rows, cols);

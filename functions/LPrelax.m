@@ -1,8 +1,10 @@
 function [x,Z] = LPrelax(A,y)
+%gives estimate of x using LPrelax
     Aineq = zeros(sum(y==1),length(A(1,:)));
     Aeq = zeros(sum(y==0),length(A(1,:)));
     pos = 0;
     neg = 0;
+   %Split A matrix to add the constraints
     for k = 1:length(y)
         if y(k) == 1
             Aineq(k-neg,:) = (-1).*A(k,:);
@@ -24,8 +26,10 @@ function [x,Z] = LPrelax(A,y)
     
     options = optimoptions('linprog', 'Display', 'off');
     
-
+ %use LP solver
     [x, Z] = linprog(f, Aineq, bineq, Aeq, beq,lb, [], options);
+
+    %make result in integer form
     x(x > 0 & x <= 1) = 1;
 
 
